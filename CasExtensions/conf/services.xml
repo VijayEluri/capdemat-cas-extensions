@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC  "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+  <bean id="cvqCas" class="org.jasig.cas.services.RegisteredService">
+    <!-- service id -->
+    <constructor-arg index="0"><value>https://cartevaloise.valdoise.fr:8443/BackOffice/</value></constructor-arg>
+    <!-- allowed to proxy ? -->
+    <constructor-arg index="1"><value>true</value></constructor-arg>
+    <!-- force auth ? -->
+    <constructor-arg index="2"><value>true</value></constructor-arg>
+    <!-- theme name -->
+    <constructor-arg index="3"><null /></constructor-arg>
+    <!-- proxy URL -->
+    <!-- <constructor-arg index="4"><value>https://cartevaloise.valdoise.fr:8443/BackOffice/</value></constructor-arg> -->
+    <constructor-arg index="4"><null /></constructor-arg>
+  </bean>
+
+</beans>
