@@ -1,2 +1,2 @@
 <%@ page session="false" %>
-<p>Click <a href="${service}?ticket=${ticket}">here</a> to go to the application.</p>
+<p>Cliquer <a href="${service}?ticket=${ticket}">ici</a> pour accéder à l'application.</p>

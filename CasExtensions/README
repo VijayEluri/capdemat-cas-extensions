@@ -9,8 +9,8 @@ from the SSO capabilities offered by the CAS project.
 Build
 =====
 Run ant cas-extensions on the command line.
-That will produce a cas-extensions-{version}.zip that contains a JAR file, some
-JSP files (and maybe other things in the future).
+That will produce a cas-extensions-{version}.zip ZIP that contains a JAR file,
+some JSP files (and maybe other things in the future).
 Unzip this file in the home of the CAS server webapp and that's it.
 
 Post-Install
@@ -20,6 +20,10 @@ restrictions by adding the value /WEB-INF/approvedServices.xml in the parameter
 contextConfigLocation. 
 Edit the WEB-INF/approvedServices.xml file and change the serviceRegistry's
 class to fr.cg95.sso.cas.CvqServiceRegistry
+Edit the WEB-INF/cas-servlet.xml file and point the basename property of the
+viewResolver to cg95_view.properties (instead of default_view.properties) and
+the defaultThemeName property of the themeResolver to cg95 (instead of
+default).
 
 TODO
 ====

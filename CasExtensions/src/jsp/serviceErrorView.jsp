@@ -7,12 +7,12 @@
 		<!-- $Id: serviceErrorView.jsp,v 1.1 2005/04/01 03:55:24 sbattaglia Exp $ -->
 	
 		<!-- DOCUMENT TITLE: CHANGE TO NEW TITLE -->
-		<title>JA-SIG  Central  Authentication  Service (CAS)</title>
+		<title>Service d'Authentification du Conseil Général du Val d'Oise</title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	
 		<!-- KEYWORDS AND DESCRIPTIONS GO INTO THIS SECTION -->
 	
-		<meta name="keywords" content="Central Authentication Service,JA-SIG,CAS" />
+		<meta name="keywords" content="Conseil Général, Val d'Oise, Central Authentication Service,JA-SIG,CAS" />
 	
 		<!-- THIS CODE PROVIDES THE FORMATTING FOR THE TEXT - PLEASE LEAVE INTACT -->
 		<link rel="stylesheet" href="<spring:theme code="css"/>" type="text/css" media="all" />
@@ -23,8 +23,7 @@
   <body onload="init();">
 	<!-- HEADER -->
 	<div id="header">
-		<a id="top">Java Architecture Special Interest Group</a>
-		<h1>JA-SIG Central  Authentication  Service</h1>
+		<h1>Service d'Authentification du Conseil Général du Val d'Oise</h1>
 	</div>
 	<!-- END HEADER -->
 
@@ -36,7 +35,9 @@
 			<h2 style="margin-bottom:0;">Please Log In</h2>
 
 			<p style="margin-top:-.5em;border:1px solid #ccc;background-color:#ffc;color:#000;padding:5px;">
-				The service you were attempting to authenticate to is not allowed to use CAS.<br /><br />
+				Le service auquel vous essayez d'accéder n'est
+				pas autorisé à utiliser le service
+				d'authentification CAS.<br /><br />
 			</p>
 		</div>
 	</div><!-- END CONTENT -->
