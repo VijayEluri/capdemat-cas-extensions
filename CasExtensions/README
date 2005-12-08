@@ -10,10 +10,11 @@ from the SSO capabilities offered by the CAS project.
 Build
 =====
 
+Deploy the CAS war found in this directory.
 Run ant cas-extensions on the command line.
 That will produce a cas-extensions-{version}.zip ZIP that contains a JAR file,
 some JSP files (and maybe other things in the future).
-Unzip this file in the home of the CAS server webapp and that's it.
+Unzip this file in the home of the CAS server webapp deployment directory and that's it.
 
 
 Post-Install
@@ -37,7 +38,6 @@ Edit the WEB-INF/deployerConfigContext.xml file and :
    (SimpleTestUsernamePasswordAuthenticationHandler) and instead add the following : <ref
    bean="ldapHandler"/> 
    * add the following beans definitions at the end of the file :
-
   <bean id="ldapHandler" class="org.jasig.cas.adaptors.ldap.BindLdapAuthenticationHandler">
     <property name="allowMultipleAccounts">
       <value>false</value>
