@@ -49,6 +49,8 @@
       <zipfileset dir="${src.jsp.dir}" prefix="WEB-INF/view/jsp/cg95/ui"/>
       <zipfileset dir="${conf.dir}" includes="services.xml" fullpath="WEB-INF/classes/services.xml"/>
       <zipfileset dir="${conf.dir}" includes="cg95_views.properties" fullpath="WEB-INF/classes/cg95_views.properties"/>
+      <zipfileset dir="${conf.dir}" includes="cg95.properties" fullpath="WEB-INF/classes/cg95.properties"/>
+      <zipfileset dir="${conf.dir}" includes="deployerConfigContext.xml" fullpath="WEB-INF/deployerConfigContext.xml"/>
     </zip>
   </target>
 
