@@ -59,13 +59,7 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
         InitialContext context=null;
         try {
             context = new InitialContext(env);
-//            String userBaseBranch = userProvider + ",dc=" + localAuthority + "," + ditRoot;
-//            DirContext ctx = (DirContext) context.lookup(userBaseBranch);
-//            SearchControls searchControl = new SearchControls();
-//            NamingEnumeration namingEnumeration = ctx.search("","(uid="+uid+")",searchControl);
-//            if (namingEnumeration.hasMore()) {
-//                return true;
-//            } 
+            // if context successfully initiated, that's ok
             return true;
         } catch (NamingException e) {
             log.error("Authentication failed for user "+cn+" : ",e);
