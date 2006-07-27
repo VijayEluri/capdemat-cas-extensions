@@ -17,11 +17,10 @@
 	
 		<!-- THIS CODE PROVIDES THE FORMATTING FOR THE TEXT - PLEASE LEAVE INTACT -->
 		<link rel="stylesheet" href="<spring:theme code="css"/>" type="text/css" media="all" />
-		<script src="js/common.js" type="text/javascript"></script>
 	</head>
 
 
-  <body onload="init();">
+  <body>
 	<!-- HEADER -->
 	<div id="header">
 		<h1>Service d'Authentification du Conseil Général du Val d'Oise</h1>

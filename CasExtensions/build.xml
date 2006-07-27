@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="CVQ - Model" default="dist-all" basedir="./">
+<project name="CAS Extensions" default="cas-extensions" basedir="./">
 
   <description>Ant build file for the CG95 - SSO project</description>
 
-  <target name="init">  
-    <!-- General config -->
-    <tstamp />
+  <target name="init">
+
     <property file="${basedir}/build.properties" />
 
     <mkdir dir="${build.classes.dir}" />
@@ -14,43 +13,54 @@
 
     <!-- Paths -->
     <path id="classpath.compile">
-
       <fileset dir="${lib.dir}">
-         <include name="**/*.jar"/>
+        <include name="**/*.jar" />
       </fileset>
-    </path>           
+    </path>
 
-  </target>  
-  
+  </target>
+
   <target name="clean" depends="init">
-    <delete dir="${build.dir}"/>
+    <delete dir="${build.dir}" />
   </target>
 
   <target name="compile" depends="init">
-    <javac optimize="on" debug="on" verbose="off" srcdir="${src.java.dir}" includes="**/*.java" destdir="${build.classes.dir}">
-      <classpath refid="classpath.compile"/>
+    <javac optimize="on"
+           debug="on"
+           verbose="off"
+           srcdir="${src.java.dir}"
+           includes="**/*.java"
+           destdir="${build.classes.dir}">
+      <classpath refid="classpath.compile" />
     </javac>
   </target>
 
   <target name="cas-jar" depends="compile">
-    <jar compress="on" 
-      jarfile="${build.cas.dir}/cas-extensions-${app.version}.jar"
-      manifest="${src.java.dir}/META-INF/manifest.mf">
+    <jar compress="on"
+         jarfile="${build.cas.dir}/cas-extensions-${app.version}.jar"
+         manifest="${src.java.dir}/META-INF/manifest.mf">
       <fileset dir="${build.classes.dir}">
-	<include name="**/**"/>
+        <include name="**/**" />
       </fileset>
     </jar>
   </target>
 
   <target name="cas-extensions" depends="cas-jar">
     <zip destfile="${build.archives.dir}/cas-extensions-${app.version}.zip">
-      <zipfileset dir="${build.cas.dir}" prefix="WEB-INF/lib"/>
-      <zipfileset dir="${lib.dir}" includes="cas-server-ldap-3.0.4-SNAPSHOT.jar" prefix="WEB-INF/lib"/>
-      <zipfileset dir="${src.jsp.dir}" prefix="WEB-INF/view/jsp/cg95/ui"/>
-      <zipfileset dir="${conf.dir}" includes="services.xml" fullpath="WEB-INF/classes/services.xml"/>
-      <zipfileset dir="${conf.dir}" includes="cg95_views.properties" fullpath="WEB-INF/classes/cg95_views.properties"/>
-      <zipfileset dir="${conf.dir}" includes="cg95.properties" fullpath="WEB-INF/classes/cg95.properties"/>
-      <zipfileset dir="${conf.dir}" includes="deployerConfigContext.xml" fullpath="WEB-INF/deployerConfigContext.xml"/>
+      <zipfileset dir="${build.cas.dir}" prefix="WEB-INF/lib" />
+      <zipfileset dir="${src.jsp.dir}" prefix="WEB-INF/view/jsp/cg95/ui" />
+      <zipfileset dir="${conf.dir}"
+                  includes="cg95_views.properties"
+                  fullpath="WEB-INF/classes/cg95_views.properties" />
+      <zipfileset dir="${conf.dir}"
+                  includes="cg95.properties"
+                  fullpath="WEB-INF/classes/cg95.properties" />
+      <zipfileset dir="${conf.dir}"
+                  includes="deployerConfigContext.xml"
+                  fullpath="WEB-INF/deployerConfigContext.xml" />
+      <zipfileset dir="${conf.dir}"
+                  includes="ldap.properties"
+                  fullpath="WEB-INF/ldap.properties" />
     </zip>
   </target>
 

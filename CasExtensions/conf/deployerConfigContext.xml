@@ -49,8 +49,12 @@
 					| need to change this bean declaration (or add additional declarations) to declare a CredentialsToPrincipalResolver that supports the
 					| Credentials you are using.
 					+-->
+                <!-- 
 				<bean
 					class="org.jasig.cas.authentication.principal.UsernamePasswordCredentialsToPrincipalResolver" />
+                -->
+                <bean
+                    class="fr.cg95.sso.cas.principal.UsernamePasswordAuthorityCredentialsToPrincipalResolver" />
 				<!--
 					| HttpBasedServiceCredentialsToPrincipalResolver supports HttpBasedCredentials.  It supports the CAS 2.0 approach of
 					| authenticating services by SSL callback, extracting the callback URL from the Credentials and representing it as a
@@ -86,54 +90,39 @@
 					| local authentication strategy.  You might accomplish this by coding a new such handler and declaring
 					| edu.someschool.its.cas.MySpecialHandler here, or you might use one of the handlers provided in the adaptors modules.
 					+-->
-				<!-- <bean
-					class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />-->
-	                        <ref bean="ldapHandler"/>
+                <!-- 
+				<bean
+					class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
+                -->
+              <bean
+                   class="fr.cg95.sso.cas.handler.AulWithAuthoritiesHandler">
+                <property name="adminPassword"  value="${adminPassword}"/>
+                <property name="userProvider"  value="${userProvider}"/>
+                <property name="groupProvider"  value="${groupProvider}"/>
+                <property name="adminDn"  value="${adminDn}"/>
+                <property name="ldapUrl"  value="${ldapUrl}"/>
+                <property name="ditRoot" value="${ditRoot}"></property>
+              </bean>
 			</list>
 		</property>
 	</bean>
+  
+    <bean id="configurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="location"><value>/WEB-INF/ldap.properties</value></property>
+    </bean>
 
-  <bean id="ldapHandler" class="org.jasig.cas.adaptors.ldap.BindLdapAuthenticationHandler">
-    <property name="allowMultipleAccounts">
-      <value>false</value>
-    </property>
-    <property name="maxNumberResults">
-      <value>1</value>
-    </property>
-    <property name="searchBase">
-      <value>ou=persons,dc=cg95,dc=fr</value>
-    </property>
-    <property name="timeout">
-      <value>60</value>
-    </property>
-    <property name="filter">
-      <value>uid=%u</value>
-    </property>
-    <property name="contextSource">
-      <ref bean="contextSource"/>
-    </property>
-  </bean>
-
-  <bean id="contextSource" class="org.springframework.ldap.support.UrlContextSource">
-    <property name="ldapUrl">
-      <value>ldap://cvq1:389/</value>
-    </property>
-    <property name="securityAuthentication">
-      <value>simple</value>
-    </property>
-    <!--
-    <property name="securityCredentials">
-      <value>userPassword</value>
-    </property>
-    <property name="securityPrincipal">
-      <value></value>
-    </property>
-    -->
-    <!--
-    <property name="securityProtocol">
-      <value></value>
-    </property>
-    -->
-  </bean>
-
+    <bean id="localAuthorityFeederInterceptor"
+      class="fr.cg95.sso.cas.interceptor.LocalAuthorityFeederInterceptor">
+      <property name="ldapService">
+        <bean class="fr.cg95.sso.cas.handler.AulWithAuthoritiesHandler">
+          <property name="adminPassword"  value="${adminPassword}"/>
+          <property name="userProvider"  value="${userProvider}"/>
+          <property name="groupProvider"  value="${groupProvider}"/>
+          <property name="adminDn"  value="${adminDn}"/>
+          <property name="ldapUrl"  value="${ldapUrl}"/>
+          <property name="ditRoot" value="${ditRoot}"></property>
+        </bean>
+      </property>
+    </bean>
+      
 </beans>

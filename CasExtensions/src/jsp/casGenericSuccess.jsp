@@ -8,7 +8,7 @@
 		<!-- $Id: casGenericSuccess.jsp,v 1.4 2005/06/06 22:10:18 dmazurek Exp $ -->
 	
 		<!-- DOCUMENT TITLE: CHANGE TO NEW TITLE -->
-		<title>JA-SIG  Central  Authentication  Service (CAS)</title>
+		<title>Service d'authentification du Conseil Général du Val d'Oise</title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	
 		<!-- KEYWORDS AND DESCRIPTIONS GO INTO THIS SECTION -->
@@ -17,15 +17,14 @@
 	
 		<!-- THIS CODE PROVIDES THE FORMATTING FOR THE TEXT - PLEASE LEAVE INTACT -->
 		<link rel="stylesheet" href="<spring:theme code="css" />" type="text/css" media="all" />
-		<script src="js/common.js" type="text/javascript"></script>
 	</head>
 
 
-  <body onload="init();">
+  <body>
 	<!-- HEADER -->
 	<div id="header">
 		<a id="top">Java Architecture Special Interest Group</a>
-		<h1>JA-SIG Central  Authentication  Service</h1>
+		<h1>Service d'authentification du Conseil Général du Val d'Oise</h1>
 	</div>
 	<!-- END HEADER -->
 
@@ -34,11 +33,13 @@
 	<div id="content">
 
 		<div class="dataset clear" style="position: relative;">
-			<h2 style="margin-bottom:0;">Log In Successful</h2>
+			<h2 style="margin-bottom:0;">Connexion réussie</h2>
 
 			<p style="margin-top:-.5em;border:1px solid #ccc;background-color:#ffc;color:#000;padding:5px;">
-				You have successfully logged into the Central Authentication Service.<br /><br />
-			  For security reasons, please Log Out and Exit your web browser when you are done accessing services that require authentication!
+				Vous vous êtes connecté avec succès au service d'authentification du Conseil
+				Général du Val d'Oise.<br/><br/>
+				Pour des raisons de sécurité, déconnectez-vous et fermez votre navigateur lorsque vous
+				voulez terminer votre session !
 			</p>
 		</div>
 	</div><!-- END CONTENT -->
