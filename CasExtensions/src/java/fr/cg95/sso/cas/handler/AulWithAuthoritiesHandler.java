@@ -77,9 +77,10 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
     private void fetchGroups (String cn, String uid, String password, String localAuthority,
             Map properties) {
         Hashtable env = new Hashtable();
-        env.put(Context.SECURITY_PRINCIPAL,cn);
-        env.put(Context.SECURITY_CREDENTIALS,password);
-        env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.ldap.LdapCtxFactory");
+        String userDn = cn + "," + userProvider + ",dc=" + localAuthority + "," + ditRoot;
+        env.put(Context.SECURITY_PRINCIPAL, userDn);
+        env.put(Context.SECURITY_CREDENTIALS, password);
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         env.put(Context.SECURITY_AUTHENTICATION, "simple");
         env.put(Context.PROVIDER_URL, ldapUrl);
         
@@ -96,15 +97,15 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
                 if (properties.get("group") == null)
                     properties.put("group",new ArrayList());
                 ((List) properties.get("group")).add(group);
-            } 
+            }
         } catch (NamingException e) {
-            log.error("Erreur de récupération des groupes de l'utilisateur "+cn+" : ",e);
+            log.error("Error while retrieving groups for user " + cn + " : ", e);
         } finally {
             if (context!=null)
                 try {
                     context.close();
                 } catch (NamingException e) {
-                    log.error("Erreur de fermeture de la conneciton LDAP",e);
+                    log.error("Error while closing LDAP connection",e);
                 }
         }
     }
