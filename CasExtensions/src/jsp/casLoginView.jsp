@@ -35,7 +35,7 @@
 			nécessitant une authentification !
 		</p>
 
-		<form method="post" action="login">
+		<form method="post" action="">
 
 			<!-- Begin error message generating Server-Side tags -->
 			<spring:hasBindErrors name="credentials">
