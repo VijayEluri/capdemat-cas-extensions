@@ -8,12 +8,12 @@
 		<!-- $Id: casLogoutView.jsp,v 1.5 2005/06/09 20:43:51 sbattaglia Exp $ -->
 	
 		<!-- DOCUMENT TITLE: CHANGE TO NEW TITLE -->
-		<title>Service d'Authentification du Conseil Général du Val d'Oise</title>
+		<title>Service d'Authentification de CapWebCT</title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	
 		<!-- KEYWORDS AND DESCRIPTIONS GO INTO THIS SECTION -->
 	
-		<meta name="keywords" content="Conseil Général, Val d'Oise, Central Authentication Service,JA-SIG,CAS" />
+		<meta name="keywords" content="Conseil Général, Val d'Oise, CapWebCT, Central Authentication Service,JA-SIG,CAS" />
 	
 		<!-- THIS CODE PROVIDES THE FORMATTING FOR THE TEXT - PLEASE LEAVE INTACT -->
 		<link rel="stylesheet" href="<spring:theme code="css"/>" type="text/css" media="all" />
@@ -22,8 +22,9 @@
 
   <body>
 	<!-- HEADER -->
+    <img src="images/cvq_bandeau_cg95.jpg" />
 	<div id="header">
-		<h1>Service d'Authentification du Conseil Général du Val d'Oise</h1>
+		<h1>Service d'Authentification de CapWebCT</h1>
 	</div>
 	<!-- END HEADER -->
 
@@ -35,9 +36,8 @@
 			<h2 style="margin-bottom:0;">Déconnexion réussie</h2>
 
 			<p style="margin-top:-.5em;border:1px solid #ccc;background-color:#ffc;color:#000;padding:5px;">
-                          Vous avez été déconnecté du service
-                          d'authentification. Pour des raisons de sécurité,
-                          quittez aussi votre navigateur Web.
+              Vous avez été déconnecté du service d'authentification de CapWebCT.
+              Pour des raisons de sécurité, quittez aussi votre navigateur Web.
 			</p>
 			
 			<%--

@@ -68,7 +68,7 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
                 try {
                     context.close();
                 } catch (NamingException e) {
-                    log.error("Erreur de fermeture de la conneciton LDAP",e);
+                    log.error("Erreur de fermeture de la connexion LDAP",e);
                 }
         }
         return false;

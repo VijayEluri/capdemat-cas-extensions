@@ -8,7 +8,7 @@
 		<!-- $Id: casGenericSuccess.jsp,v 1.4 2005/06/06 22:10:18 dmazurek Exp $ -->
 	
 		<!-- DOCUMENT TITLE: CHANGE TO NEW TITLE -->
-		<title>Service d'authentification du Conseil Général du Val d'Oise</title>
+		<title>Service d'authentification de CapWebCT</title>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	
 		<!-- KEYWORDS AND DESCRIPTIONS GO INTO THIS SECTION -->
@@ -22,9 +22,10 @@
 
   <body>
 	<!-- HEADER -->
+    <img src="images/cvq_bandeau_cg95.jpg" />
 	<div id="header">
 		<a id="top">Java Architecture Special Interest Group</a>
-		<h1>Service d'authentification du Conseil Général du Val d'Oise</h1>
+		<h1>Service d'authentification de CapWebCT</h1>
 	</div>
 	<!-- END HEADER -->
 
@@ -36,8 +37,7 @@
 			<h2 style="margin-bottom:0;">Connexion réussie</h2>
 
 			<p style="margin-top:-.5em;border:1px solid #ccc;background-color:#ffc;color:#000;padding:5px;">
-				Vous vous êtes connecté avec succès au service d'authentification du Conseil
-				Général du Val d'Oise.<br/><br/>
+				Vous vous êtes connecté avec succès au service d'authentification de CapWebCT.<br/><br/>
 				Pour des raisons de sécurité, déconnectez-vous et fermez votre navigateur lorsque vous
 				voulez terminer votre session !
 			</p>

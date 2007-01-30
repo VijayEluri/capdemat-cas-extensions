@@ -6,11 +6,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>Service d'Authentification du Conseil Général du Val d'Oise</title>
+    <title>Service d'Authentification de CapWebCT</title>
 	<meta name="keywords"
 		content="Conseil Général, Val d'Oise, Central Authentication Service, JA-SIG, CAS" />
 	<meta name="description"
-		content="Page de login du service d'authentification du Conseil Général du Val d'Oise" />
+		content="Page de login du service d'authentification de CapWebCT" />
 	<meta name="author" content="Benoit Orihuela" />
 
 	<!-- THIS CODE PROVIDES THE FORMATTING FOR THE TEXT - PLEASE LEAVE INTACT -->
@@ -19,8 +19,9 @@
 	<script src="js/common.js" type="text/javascript"></script>
   </head>
   <body>
+    <img src="images/cvq_bandeau_cg95.jpg" />
 	<div id="header">
-		<h1>Service d'Authentification du Conseil Général du Val d'Oise</h1>
+		<h1>Service d'Authentification de CapWebCT</h1>
 	</div>
 
 	<!-- CONTENT -->
