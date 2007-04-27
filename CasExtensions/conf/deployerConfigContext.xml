@@ -113,6 +113,7 @@
 
     <bean id="localAuthorityFeederInterceptor"
       class="fr.cg95.sso.cas.interceptor.LocalAuthorityFeederInterceptor">
+      <!-- 
       <property name="ldapService">
         <bean class="fr.cg95.sso.cas.handler.AulWithAuthoritiesHandler">
           <property name="adminPassword"  value="${adminPassword}"/>
@@ -123,6 +124,7 @@
           <property name="ditRoot" value="${ditRoot}"></property>
         </bean>
       </property>
+      -->
     </bean>
       
 </beans>

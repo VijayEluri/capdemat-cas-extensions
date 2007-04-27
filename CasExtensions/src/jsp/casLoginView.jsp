@@ -55,14 +55,6 @@
 
 						<p>Mot de passe <input type="password" id="password" name="password" size="32" tabindex="2" accesskey="p" /></p>
 
-						<p>Collectivité 
-							<select name="authority">
-								<c:forEach var="localAuthority" items="${localAuthorities}">
-									<option value="${localAuthority.key}">${localAuthority.value}</option>
-								</c:forEach>
-							</select>
-						</p>
-
 						<p>
 							<input type="checkbox" id="warn" name="warn" value="false" tabindex="3" />
 								Me prévenir avant de me connecter à d'autres sites
@@ -70,6 +62,7 @@
 							<input type="hidden" name="lt" value="${flowExecutionId}" /> 
 							<input type="hidden" name="_currentStateId" value="${currentStateId}" /> 
 							<input type="hidden" name="_eventId" value="submit" />
+							<input type="hidden" name="authority" value="${localAuthority}" />
 						</p>
 
 						<p>

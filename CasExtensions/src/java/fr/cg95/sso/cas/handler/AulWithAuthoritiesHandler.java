@@ -182,6 +182,9 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
                     || (SUPPORTED_CLASS.isAssignableFrom(credentials.getClass())));
     }
 
+    /**
+     * @deprecated but kept here in case the CG95 changes his mind one more time.
+     */
     public Map getAllLocalAuthorities() throws Exception {
 
         Map resultMap = new HashMap();
