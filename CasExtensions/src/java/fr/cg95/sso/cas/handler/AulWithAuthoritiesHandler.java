@@ -17,6 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
@@ -146,7 +147,45 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
         }
         return null;
     }
-    
+
+    private String fetchEmail(String uid, String localAuthority) {
+        Hashtable<String, String> env = new Hashtable<String, String>();
+        env.put(Context.SECURITY_PRINCIPAL, adminDn);
+        env.put(Context.SECURITY_CREDENTIALS, adminPassword);
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+        env.put(Context.SECURITY_AUTHENTICATION, "simple");
+        env.put(Context.PROVIDER_URL, ldapUrl);
+        InitialContext context = null;
+        try {
+            context = new InitialContext(env);
+            String userBaseBranch = userProvider + ",dc=" + localAuthority + "," + ditRoot;
+            DirContext ctx = (DirContext) context.lookup(userBaseBranch);
+            SearchControls searchControl = new SearchControls();
+            searchControl.setSearchScope(SearchControls.SUBTREE_SCOPE);
+            NamingEnumeration<SearchResult> namingEnumeration =
+                ctx.search("", "(uid=" + uid + ")",searchControl);
+            if (namingEnumeration.hasMore()) {
+                SearchResult result = namingEnumeration.next();
+                Attribute email = result.getAttributes().get("mail");
+                if (email != null) return email.get().toString();
+            } else {
+                log.error("l'utilisateur uid " + uid + " n'existe pas");
+            }
+        } catch (NamingException e) {
+            log.error(
+                "Erreur lors de la requête service. Vérifiez les propriétés adminDn et adminPassword",
+                e);
+        } finally {
+            if (context != null)
+                try {
+                    context.close();
+                } catch (NamingException e) {
+                    log.error("Erreur de fermeture de la connexion LDAP", e);
+                }
+        }
+        return null;
+    }
+
     public boolean authenticate(Credentials credentials) throws AuthenticationException {
         UsernamePasswordAuthorityCredentials myCredentials =
             (UsernamePasswordAuthorityCredentials) credentials;
@@ -161,6 +200,10 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
                 myCredentials.getAuthority(), userProperties);
         String newCredentials = "username=" + myCredentials.getUsername() 
             + ";localAuthority=" + myCredentials.getAuthority();
+        String email = fetchEmail(myCredentials.getUsername(), myCredentials.getAuthority());
+        if (email != null) {
+            newCredentials += ";email=" + email;
+        }
         Iterator userPropertiesIt = userProperties.keySet().iterator();
         while (userPropertiesIt.hasNext()) {
             String key = (String) userPropertiesIt.next();
