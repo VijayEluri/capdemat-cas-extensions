@@ -94,6 +94,7 @@
 				<bean
 					class="org.jasig.cas.authentication.handler.support.SimpleTestUsernamePasswordAuthenticationHandler" />
                 -->
+  
               <bean
                    class="fr.cg95.sso.cas.handler.AulWithAuthoritiesHandler">
                 <property name="adminPassword"  value="${adminPassword}"/>
@@ -102,6 +103,15 @@
                 <property name="adminDn"  value="${adminDn}"/>
                 <property name="ldapUrl"  value="${ldapUrl}"/>
                 <property name="ditRoot" value="${ditRoot}"></property>
+              </bean>
+                
+              <bean
+                   class="fr.cg95.sso.cas.handler.TavernyAuthenticationHandler">
+                <property name="adminPassword"  value="${tah.adminPassword}"/>
+                <property name="userProvider"  value="${tah.userProvider}"/>
+                <property name="adminDn"  value="${tah.adminDn}"/>
+                <property name="ldapUrl"  value="${tah.ldapUrl}"/>
+                <property name="ditRoot" value="${tah.ditRoot}"></property>
               </bean>
 			</list>
 		</property>
