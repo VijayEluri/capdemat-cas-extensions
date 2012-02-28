@@ -62,6 +62,12 @@
       <zipfileset dir="${conf.dir}"
                   includes="ldap.properties"
                   fullpath="WEB-INF/ldap.properties" />
+      <zipfileset dir="${conf.dir}"
+                  includes="log4j.properties"
+                  fullpath="WEB-INF/classes/log4j.properties" />
+      <zipfileset dir="${conf.dir}"
+                  includes="cas-servlet.xml"
+                  fullpath="WEB-INF/cas-servlet.xml" />
     </zip>
   </target>
 
