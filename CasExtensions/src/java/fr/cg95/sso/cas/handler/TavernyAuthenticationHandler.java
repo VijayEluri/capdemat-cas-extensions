@@ -8,6 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
@@ -123,6 +124,17 @@ public class TavernyAuthenticationHandler implements AuthenticationHandler {
         credentialsBuffer.append("username=").append(myCredentials.getUsername());
         if (myCredentials.getAuthority() != null && !myCredentials.getAuthority().equals(""))
             credentialsBuffer.append(";localAuthority=").append(myCredentials.getAuthority());
+        credentialsBuffer.append(";email=").append(myCredentials.getUsername()).append("@ville-taverny.fr");
+        try {
+            Attribute firstName = result.getAttributes().get("givenName");
+            if (firstName != null)
+                credentialsBuffer.append(";firstName=").append(firstName.get().toString());
+            Attribute lastName = result.getAttributes().get("sn");
+            if (lastName != null)
+                credentialsBuffer.append(";lastName=").append(lastName.get().toString());
+        } catch (NamingException ne) {
+            log.error("Naming exception while retrieving user data ", ne);
+        }
         Pattern p = Pattern.compile("ou=(.*?),");
         Matcher m = p.matcher(userDn);
         while (m.find()) {
