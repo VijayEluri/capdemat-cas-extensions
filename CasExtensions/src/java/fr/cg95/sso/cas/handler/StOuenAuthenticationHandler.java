@@ -136,9 +136,9 @@ public class StOuenAuthenticationHandler implements AuthenticationHandler {
             Attribute groups = result.getAttributes().get("memberOf");
             NamingEnumeration groupsEnumeration = groups.getAll();
             while (groupsEnumeration.hasMore()) {
-                Attribute group = (Attribute) groupsEnumeration.next();
+                String group = (String) groupsEnumeration.next();
                 if (group != null)
-                    credentialsBuffer.append(";group=").append(group.get().toString());
+                    credentialsBuffer.append(";group=").append(group);
             }
         } catch (NamingException ne) {
             log.error("Naming exception while retrieving user data ", ne);
