@@ -136,7 +136,7 @@ public class AulWithAuthoritiesHandler implements AuthenticationHandler {
                 log.error("l'utilisateur uid "+uid+" n'existe pas");
             }
         } catch (NamingException e) {
-            log.error("Erreur lors de la requete service. Vérifiez les propriétés adminDn et adminPassword",e);
+            log.error("Erreur lors de la requÃªte service. VÃ©rifiez les propriÃ©tÃ©s adminDn et adminPassword",e);
         } finally {
             if (context!=null)
                 try {
